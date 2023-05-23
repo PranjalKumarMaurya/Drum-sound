@@ -36,14 +36,24 @@ function makeSound(key) {
 
 }
 
+function animation(key) {
+
+    document.querySelector("."+key).classList.add("pressed");
+    setTimeout(function() {
+        document.querySelector("."+key).classList.remove("pressed");
+    }, 100)
+}
+
 for(let i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
     document.querySelectorAll(".drum")[i].addEventListener("click", function() {
         makeSound(this.innerHTML);
+        animation(this.innerHTML);
     })
 
 }
 
 document.addEventListener("keydown", function(event) {
     makeSound(event.key);
+    animation(event.key);
 })
